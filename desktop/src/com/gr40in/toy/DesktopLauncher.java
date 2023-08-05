@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("TryGetTheToy");
 		config.setWindowedMode(1024, 1024);
-		config.setForegroundFPS(60);
+		config.setForegroundFPS(20);
 		new Lwjgl3Application(new Game(), config);
 
 	}
