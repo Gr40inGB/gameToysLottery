@@ -15,33 +15,9 @@ public class GameFilesHandler {
     final private String patchList = "listGSON";
     final private String patchCount = "countMapGSON";
     private Gson dump;
-    private List<Toy> list;
-    private Map<Integer, Integer> toysCount;
-
-    public List<Toy> getList() {
-        return list;
-    }
-
-    public Map<Integer, Integer> getToysCount() {
-        return toysCount;
-    }
 
     public GameFilesHandler() {
         this.dump = new GsonBuilder().setPrettyPrinting().create();
-
-        try {
-
-            this.list = this.getToysFromGSON();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            this.toysCount = this.getCountFromGSON();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
     public void save(List<Toy> listToSave, String newPatch) {
@@ -83,9 +59,6 @@ public class GameFilesHandler {
         }.getType();
 //        System.out.println(this.dump.fromJson(new FileReader("listGSON"), type));
         return this.dump.fromJson(new FileReader("listGSON"), type);
-    }
-
-
     }
 
 }
