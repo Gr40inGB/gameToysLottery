@@ -15,7 +15,7 @@ public class ToyAssortmentImp implements ToyAssortment {
 //    private Map<Toy, Integer> toysMap;
 
 
-    public ToyAssortmentImp()  {
+    public ToyAssortmentImp() {
         this.filesHandler = new GameFilesHandler();
 
         try {
@@ -37,13 +37,28 @@ public class ToyAssortmentImp implements ToyAssortment {
     }
 
     @Override
-    public void addToy(Toy toy) {
-
+    public void change(Toy toy, Integer difficulty) {
+        for (int i = 0; i < toysList.size(); i++) {
+            if (toysList.get(i).equals(toy)) {
+                toysList.get(i).setDifficulty(difficulty);
+            }
+        }
     }
 
     @Override
-    public void addToy(List<Toy> toyList) {
-
+    public void addToy(Toy toy, Integer count) {
+        boolean needAdd = true;
+        for (Toy t : this.toysList) {
+            if (t.equals(toy)) {
+                needAdd = false;
+            }
+        }
+        if (needAdd) {
+            toysList.add(toy);
+            this.toysCount.put(toy.getToy_id(), count);
+        } else {
+            this.toysCount.put(toy.getToy_id(), count + this.toysCount.get(toy.getToy_id()));
+        }
     }
 
     @Override
@@ -55,7 +70,7 @@ public class ToyAssortmentImp implements ToyAssortment {
     public Map<Toy, Integer> getAssortment() {
 
         Map<Toy, Integer> toysMap = new HashMap<>();
-        for (Toy toy:this.toysList){
+        for (Toy toy : this.toysList) {
             toysMap.put(toy, toysCount.get(toy.getToy_id()));
         }
         return toysMap;
