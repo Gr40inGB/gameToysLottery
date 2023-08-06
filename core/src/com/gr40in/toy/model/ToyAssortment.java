@@ -11,4 +11,6 @@ public interface ToyAssortment {
     public List<Toy> getToys();
 
     public Map<Toy, Integer> getAssortment();
+
+    public void removeOneToy(Toy toy);
 }

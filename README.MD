@@ -1,3 +1,8 @@
+![Снимок экрана 2023-08-06 135112.png](1.png)
+![Снимок экрана 2023-08-06 135113.png](2.png)
+
+### FileHandler
+```java
 package com.gr40in.toy.files;
 
 import com.google.gson.Gson;
@@ -72,3 +77,5 @@ public class GameFilesHandler {
     }
 
 }
+
+```

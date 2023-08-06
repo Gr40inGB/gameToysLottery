@@ -25,11 +25,15 @@ public class ToyAssortmentImp implements ToyAssortment {
             throw new RuntimeException(e);
         }
 
-//        this.toysMap = toysMap;
-//        for (Toy toy:this.toysList){
-//            toysMap.put(toy, toysCount.get(toy.getToy_id()));
-//        }
-//        System.out.println(this.toysMap);
+        System.out.println(toysCount);
+
+    }
+
+    @Override
+    public void removeOneToy(Toy toy) {
+        this.toysCount.put(toy.getToy_id(), this.toysCount.get(toy.getToy_id() - 1));
+        this.filesHandler.save(this.toysCount);
+        this.filesHandler.addWinner(toy);
     }
 
     @Override
